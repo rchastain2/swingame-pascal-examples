@@ -2,7 +2,7 @@
 
 Pascal examples for the [SwinGame library](https://github.com/macite/swingame).
 
-Please notice that the examples (and also the commands below) have been tested only under Linux!
+Please notice that the examples (and also the commands below) have been tested only under Linux.
 
 ## Clone this repository and build the library
 
