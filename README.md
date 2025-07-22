@@ -2,8 +2,6 @@
 
 Pascal examples for the [SwinGame library](https://github.com/macite/swingame).
 
-Please notice that the examples (and also the commands below) have been tested only under Linux.
-
 ## Clone this repository and build the library
 
 ```bash
@@ -19,3 +17,29 @@ cd amethyst
 make
 ./demo
 ```
+
+## Contents
+
+### Amethyst
+
+Simple animation example.
+
+![Screenshot](amethyst/screenshot.png)
+
+### Bear
+
+Another animation example.
+
+![Screenshot](bear/screenshot.png)
+
+### Josephus
+
+Resolution of the Josephus problem.
+
+![Screenshot](josephus/screenshot.png)
+
+### Racing
+
+C64 style racing game.
+
+![Screenshot](racing/screenshot.png)
