@@ -1,0 +1,4 @@
+BITMAP,amethystBitmap,amethyst.png, 84, 84, 20, 1, 20
+ANIM,rotationScript,amethyst-rotation.txt
+SOUND,boom,boom.wav
+SOUND,moob,moob.wav
