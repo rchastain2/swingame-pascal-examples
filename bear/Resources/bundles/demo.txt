@@ -1,0 +1,6 @@
+BITMAP,bitmap_bear_idle,bear_idle.png,64,33,12,1,12
+BITMAP,bitmap_bear_run,bear_run.png,64,33,5,1,5
+BITMAP,bitmap_bear_walk,bear_walk.png,64,33,8,1,8
+ANIM,script_bear_idle,bear_idle.txt
+ANIM,script_bear_run,bear_run.txt
+ANIM,script_bear_walk,bear_walk.txt
