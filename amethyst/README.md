@@ -1,7 +1,7 @@
 # Amethyst
 
-Simple animation example.
+Animation example.
 
 ![Screenshot](screenshot.png)
 
-I don't remember where I found the graphics. Probably on [opengameart.org](https://opengameart.org/), but where exactly, I don't know.
+Graphics of unknown origin, probably [opengameart.org](https://opengameart.org/).

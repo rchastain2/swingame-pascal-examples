@@ -1,5 +1,6 @@
+PROG := demo
 
-demo: demo.pas
+$(PROG): $(PROG).pas
 	@fpc -Mobjfpc -Sh $< \
 	-Fu../swingame/CoreSDK/test \
 	-Fu../swingame/CoreSDK/src \
@@ -9,4 +10,4 @@ demo: demo.pas
 	-k-lpng
 
 clean:
-	@rm -fv *.o *.ppu demo
+	@rm -fv *.o *.ppu $(PROG)

@@ -3,7 +3,7 @@ uses
   SysUtils, JosephusProblem;
   
 var
-{ Nombre de personnes éliminées }
+{ Nombre de personnes Ã©liminÃ©es }
   e: integer;
 { Index de la personne }
   i: integer;

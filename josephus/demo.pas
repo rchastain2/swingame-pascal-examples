@@ -1,5 +1,5 @@
 
-program Josephus;
+program Demo;
 
 uses
   SwinGame, sgTypes, JosephusProblem, SysUtils, Math;

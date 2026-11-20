@@ -1,9 +1,6 @@
+PROG := demo
 
-TARGETS := josephus1 josephus2
-
-all: $(TARGETS)
-
-%: %.pas
+$(PROG): $(PROG).pas
 	@fpc -Mobjfpc -Sh $< \
 	-Fu../swingame/CoreSDK/test \
 	-Fu../swingame/CoreSDK/src \
@@ -14,4 +11,4 @@ all: $(TARGETS)
 	-k-lpng
 
 clean:
-	@rm -fv *.o *.ppu $(TARGETS)
+	@rm -fv *.o *.ppu josephusproblem/*.o josephusproblem/*.ppu $(PROG)

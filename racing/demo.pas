@@ -1,5 +1,5 @@
 
-program Game;
+program Demo;
 
 uses
   SwinGame, sgTypes, SysUtils, Math;

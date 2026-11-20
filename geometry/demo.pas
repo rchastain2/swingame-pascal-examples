@@ -1,5 +1,5 @@
 
-program Geometry;
+program Demo;
 
 uses
   SwinGame, sgTypes, SysUtils, Math;

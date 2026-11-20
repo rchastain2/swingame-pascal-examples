@@ -1,5 +1,5 @@
 
-program BouncingBalls;
+program Demo;
 
 uses
   SwinGame, sgTypes, SysUtils, Math;

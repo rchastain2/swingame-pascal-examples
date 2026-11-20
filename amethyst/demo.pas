@@ -1,5 +1,5 @@
 
-program HowToDrawAnAnimation;
+program Demo;
 
 uses 
   SwinGame, sgTypes, Math;

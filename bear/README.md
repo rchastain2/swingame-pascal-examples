@@ -1,8 +1,8 @@
 # Bear
 
-Simple animation example.
+Animation example.
 
-![alt text](screenshot.png)
+![Screenshot](screenshot.png)
 
 ## Credits
 

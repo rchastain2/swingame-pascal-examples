@@ -1,25 +1,25 @@
 
-Dans un tableau statique donné, rien n'empêche de créer une liste chaînée avec
-les indices des éléments (comme dans une FAT) :
+Dans un tableau statique donnÃ©, rien n'empÃªche de crÃ©er une liste chaÃ®nÃ©e avec
+les indices des Ã©lÃ©ments (comme dans une FAT) :
 
 +----- Indice dans le tableau
-|                 +-------- Indice de l'élément suivant
+|                 +-------- Indice de l'Ã©lÃ©ment suivant
 |                 |
-01 | Elément 01 | 03
-02 | Elément 02 | 15
-03 | Elément 03 | 06
-04 | Elément 04 |
-05 | Elément 05 |
-06 | Elément 06 | 13
-07 | Elément 07 |
-08 | Elément 08 |
-09 | Elément 09 |
-10 | Elément 10 |
-11 | Elément 11 |
-12 | Elément 12 |
-13 | Elément 13 | 02
-14 | Elément 14 |
-15 | Elément 15 | 00 <---- Fin de liste
-16 | Elément 16 |
+01 | ElÃ©ment 01 | 03
+02 | ElÃ©ment 02 | 15
+03 | ElÃ©ment 03 | 06
+04 | ElÃ©ment 04 |
+05 | ElÃ©ment 05 |
+06 | ElÃ©ment 06 | 13
+07 | ElÃ©ment 07 |
+08 | ElÃ©ment 08 |
+09 | ElÃ©ment 09 |
+10 | ElÃ©ment 10 |
+11 | ElÃ©ment 11 |
+12 | ElÃ©ment 12 |
+13 | ElÃ©ment 13 | 02
+14 | ElÃ©ment 14 |
+15 | ElÃ©ment 15 | 00 <---- Fin de liste
+16 | ElÃ©ment 16 |
 
-Voilà, je viens de créer une liste chaînée sans aucun pointeur.
+VoilÃ , je viens de crÃ©er une liste chaÃ®nÃ©e sans aucun pointeur.

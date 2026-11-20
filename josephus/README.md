@@ -1,7 +1,6 @@
-
 # Josephus problem
 
-Resolution of the Josephus problem.
+Animated resolution of the Josephus problem. Console versions of the algorithm are in [josephusproblem](josephusproblem).
 
 ![Screenshot](screenshot.png)
 
