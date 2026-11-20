@@ -5,7 +5,7 @@ Pascal examples for the [SwinGame library](https://github.com/macite/swingame).
 ## Clone this repository and build the library
 
 ```bash
-git clone https://github.com/rchastain2/swingame-pascal-examples.git --recurse-submodules
+git clone https://github.com/rchastain2/swingame-pascal-examples.git
 cd swingame-pascal-examples
 sh build-library.sh
 ```
