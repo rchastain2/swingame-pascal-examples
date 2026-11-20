@@ -26,11 +26,23 @@ Simple animation example.
 
 ![Screenshot](amethyst/screenshot.png)
 
+### Balls
+
+Bouncing balls with elastic collisions.
+
+![Screenshot](balls/screenshot.png)
+
 ### Bear
 
 Another animation example.
 
 ![Screenshot](bear/screenshot.png)
+
+### Geometry
+
+Interactive demonstrations of the geometry functions.
+
+![Screenshot](geometry/screenshot.png)
 
 ### Josephus
 
