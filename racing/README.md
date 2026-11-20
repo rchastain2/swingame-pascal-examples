@@ -1,6 +1,6 @@
 # Racing
 
-Old-school C64 style racing game.
+C64 style racing game.
 
 ![Screenshot](screenshot.png)
 
