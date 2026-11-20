@@ -94,7 +94,7 @@ begin
   repeat
     DrawPerson(p^.index, ColorYellow);
     p := p^.suivante;
-  until p^.suivante = personne;
+  until p = personne;
 end;
 
 var

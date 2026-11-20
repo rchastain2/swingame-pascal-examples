@@ -32,8 +32,6 @@ const
   FUEL_HEIGHT = SCORE_HEIGHT;
   SPEED_LEFT = 277;
   SPEED_TOP = 80;
-  SPEED_WIDTH = 21;
-  SPEED_HEIGHT = SCORE_HEIGHT;
   SPEED = 1;
   ENEMYSPEED = 3/2;
   ENEMY2SPEED = 1/2;
@@ -42,20 +40,6 @@ const
 var
   LFontBmp: Bitmap;
   
-procedure DrawRectangles;
-begin
-  FillRectangle(ColorBlue, GRASS1_LEFT + 1, GRASS1_TOP + 1, GRASS1_WIDTH - 2, GRASS1_HEIGHT - 2);
-  FillRectangle(ColorBlue, GRASS2_LEFT + 1, GRASS1_TOP + 1, GRASS1_WIDTH - 2, GRASS1_HEIGHT - 2);
- {FillRectangle(ColorBlue, ROAD_LEFT + 1, GRASS1_TOP + 1, ROAD_WIDTH - 2, GRASS1_HEIGHT - 2);}
-  FillRectangle(ColorOrange, FILE1_LEFT + 1, GRASS1_TOP + 1, FILE_WIDTH - 2, GRASS1_HEIGHT - 2);
-  FillRectangle(ColorOrange, FILE2_LEFT + 1, GRASS1_TOP + 1, FILE_WIDTH - 2, GRASS1_HEIGHT - 2);
-  FillRectangle(ColorOrange, FILE3_LEFT + 1, GRASS1_TOP + 1, FILE_WIDTH - 2, GRASS1_HEIGHT - 2);
-  FillRectangle(ColorOrange, FILE4_LEFT + 1, GRASS1_TOP + 1, FILE_WIDTH - 2, GRASS1_HEIGHT - 2);
-  FillRectangle(ColorYellow, SCORE_LEFT + 1, SCORE_TOP + 1, SCORE_WIDTH - 2, SCORE_HEIGHT - 2);
-  FillRectangle(ColorYellow, FUEL_LEFT + 1, FUEL_TOP + 1, FUEL_WIDTH - 2, FUEL_HEIGHT - 2);
-  FillRectangle(ColorYellow, SPEED_LEFT + 1, SPEED_TOP + 1, SPEED_WIDTH - 2, SPEED_HEIGHT - 2);
-end;
-
 procedure InitTrees(var ATrees: TPointArray; ABitmapWidth, ABitmapHeight: integer);
 const
   SECTOR_HEIGHT = GRASS1_HEIGHT div 3;
@@ -77,8 +61,6 @@ begin
 end;
 
 function CharToCell(c: char): integer;
-var
-  i: integer;
 begin
   if c in ['1'..'9'] then result := Ord(c) - Ord('1')
   else if c in ['a'..'z', 'A'..'Z'] then result := Ord(UpCase(c)) - Ord('A') + 10
@@ -177,18 +159,16 @@ begin
   DrawSpeed(Round(10 * LSpeed));
   DrawFuelLevel(Round(LFuelLevel));
   with LFuel do DrawBitmap(LFuelBmp, x, y);
- {DrawRectangles;}
 end;
 
 procedure HandleInput;
 const
- {DX = FILE_WIDTH + LINE_WIDTH;}
   DX = 1;
 begin
   if KeyTyped(UpKey) then LSpeed := LSpeed + 1/2;
-  if KeyTyped(DownKey) then LSpeed := LSpeed - 1/2;
-  if {KeyTyped}KeyDown(LeftKey) then if LPlayer.x > (FILE_LEFT[0] + (32 - BitmapWidth(LPlayerBmp)) div 2) then LPlayer.x := LPlayer.x - DX;
-  if {KeyTyped}KeyDown(RightKey) then if LPlayer.x < (FILE_LEFT[3] + (32 - BitmapWidth(LPlayerBmp)) div 2) then LPlayer.x := LPlayer.x + DX;
+  if KeyTyped(DownKey) and (LSpeed >= 1/2) then LSpeed := LSpeed - 1/2;
+  if KeyDown(LeftKey) then if LPlayer.x > (FILE_LEFT[0] + (32 - BitmapWidth(LPlayerBmp)) div 2) then LPlayer.x := LPlayer.x - DX;
+  if KeyDown(RightKey) then if LPlayer.x < (FILE_LEFT[3] + (32 - BitmapWidth(LPlayerBmp)) div 2) then LPlayer.x := LPlayer.x + DX;
 end;
 
 procedure UpdateGame;
@@ -238,7 +218,7 @@ begin
   if BitmapCollision(LPlayerBmp, LPlayer, LCarEnemyBmp, LCarEnemy)
   or BitmapCollision(LPlayerBmp, LPlayer, LCarEnemy2Bmp, LCarEnemy2) then
   begin
-    PlaySoundEffect(LCrashSE); Sleep(500);
+    PlaySoundEffect(LCrashSE); Delay(500);
     PlaySoundEffect(LGameOverSE);
     LGameOver := TRUE;
   end else
@@ -260,6 +240,13 @@ begin
   or BitmapCollision(LCarEnemy2Bmp, LCarEnemy2, LFuelBmp, LFuel) then
   begin
     InitFuel(LFuel, BitmapWidth(LFuelBmp), BitmapHeight(LFuelBmp));
+  end;
+  
+  if not LGameOver and (LFuelLevel <= 0) then
+  begin
+    LFuelLevel := 0;
+    PlaySoundEffect(LGameOverSE);
+    LGameOver := TRUE;
   end;
 end;
 
@@ -285,8 +272,9 @@ begin
   SetExceptionMask(FPUExceptionMask + [exZeroDivide, exInvalidOp]);
   
   Randomize;
-  LoadBitmaps;
+  OpenAudio();
   OpenGraphicsWindow('C64 Style Racing', 320, 200);
+  LoadBitmaps;
   PlayMusic(LMusic);
   InitGame;
   repeat
@@ -304,7 +292,6 @@ begin
       end;
     end else
     begin
-     {ClearScreen(ColorWhite);}
       DrawGame;
       RefreshScreen(60);
       HandleInput;
@@ -312,4 +299,7 @@ begin
       HandleCollisions;
     end;
   until WindowCloseRequested() or KeyTyped(EscapeKey);
+  
+  CloseAudio();
+  ReleaseAllResources();
 end.
