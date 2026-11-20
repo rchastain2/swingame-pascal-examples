@@ -1,3 +1,5 @@
+This is a trimmed copy of SwinGame, keeping only what is needed to build the SDL2 backend and the Pascal units, plus the howto examples. The `Dist`, `Templates` and `Tools` directories mentioned below are not included. See [CHANGELOG.md](CHANGELOG.md) for the changes made to this copy.
+
 So long and thanks for all the fish!
 
 SwinGame is no longer an active project. There was a large re-write of this to make it easier to create cross platform and cross language versions. The new product is [SplashKit](https://splashkit.io) - this supports a similar interface to SwinGame, but is faster and easier to work with.

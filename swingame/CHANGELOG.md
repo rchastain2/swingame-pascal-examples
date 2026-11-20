@@ -9,6 +9,7 @@ Changes made to this copy of SwinGame, on top of commit 73f3fe2 ("DOCS: EOL mess
 - Resource files in `CoreSDK/test/Resources` are renamed in lowercase with hyphens (for example `ball_small.png` becomes `ball-small.png` and `SpaceInvaders.txt` becomes `space-invaders.txt`). References in bundles, panels, animations and howto programs are updated accordingly.
 - The howto programs that no longer compiled are ported to the current API (`OptionToScreen`, `OptionPartBmp`, `OptionDrawTo`, `CollideCircleTriangle`, list regions, `Num0Key`..`Num9Key`, `CreateServer`, `OpenConnection`, `SendMessageTo`, `HasMessages`). `HowToCreateP2P`, which was already broken, is rewritten with the same panels.
 - The howto programs use the `arial.ttf` font file instead of the missing `Arial` font name.
+- `ReadMe.md` is renamed `README.md` and starts with a note describing this copy.
 - The file dialog (`CoreSDK/src/sgUserInterface.pas`) loads the `file-dialog.txt` bundle instead of `FileDialog.txt`.
 
 ### Removed
