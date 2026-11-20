@@ -46,7 +46,7 @@ begin
             
     if KeyTyped(SPACEKey) then CenterCameraOn(sSprite, 0, 0);    
         
-    DrawTextOnScreen(PointToString(CameraPos()), ColorBlack, 0, 0);    
+    DrawText(PointToString(CameraPos()), ColorBlack, 0, 0, OptionToScreen());    
     DrawSprite(sSprite);    
     
     RefreshScreen();    

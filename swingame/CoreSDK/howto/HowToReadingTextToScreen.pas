@@ -13,7 +13,9 @@ begin
   fnt := LoadFont('arial.ttf', 12);
   StartReadingText(ColorRed, 40, fnt, 50, 10);
 
-  bmp := DrawTextTo(fnt, 'Hello', ColorBlack, ColorTransparent);
+  bmp := CreateBitmap(TextWidth(fnt, 'Hello'), TextHeight(fnt, 'Hello'));
+  ClearSurface(bmp, ColorTransparent);
+  DrawText('Hello', ColorBlack, fnt, 0, 0, OptionDrawTo(bmp));
 
   repeat // The game loop...
     ProcessEvents();

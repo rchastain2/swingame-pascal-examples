@@ -1,6 +1,6 @@
 program SpaceInvaders;
-uses 
-	sgGraphics, sgSprites, sgPhysics, sgTypes, sgImages, sgUtils, sgInput, sgAudio, sgAnimations, sgResources, sgText;	
+uses
+	SwinGame, sgTypes;	
 	
 const PLAYER_LIFE = 3;		const PLAYER_X_POS = 300;
 const PLAYER_Y_POS = 410;	const PLAYER_SPEED = 2;

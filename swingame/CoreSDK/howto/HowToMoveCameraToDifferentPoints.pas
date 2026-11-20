@@ -25,17 +25,17 @@ begin
     ClearScreen(ColorWhite);
     
     //Camera current coordinate
-    DrawTextOnScreen(PointToString(CameraPos()), ColorBlack, 690, 2);
+    DrawText(PointToString(CameraPos()), ColorBlack, 690, 2, OptionToScreen());
     
-    DrawRectangle(ColorGreen, CameraScreenRect()); // Draw rectangle that encompases the area of the game world that is curretnly on the screen
+    DrawRectangle(ColorGreen, RectangleFrom(CameraX(), CameraY(), ScreenWidth(), ScreenHeight())); // Draw rectangle that encompases the area of the game world that is curretnly on the screen
     FillCircle(ColorBlue, 400, 450, 4);
-    DrawText('Point A', ColorBlue, 'Arial', 24, 407, 444);    
+    DrawText('Point A', ColorBlue, 'arial.ttf', 24, 407, 444);    
     
     FillCircle(ColorBlue, 1400, 1300, 4);
-    DrawText('Point B', ColorBlue, 'Arial', 24, 1407, 1294);    
+    DrawText('Point B', ColorBlue, 'arial.ttf', 24, 1407, 1294);    
     
     FillCircle(ColorBlue, -500, -300, 4);
-    DrawText('Point C', ColorBlue, 'Arial', 24, -493, -294);    
+    DrawText('Point C', ColorBlue, 'arial.ttf', 24, -493, -294);    
     
     
     RefreshScreen(60);    

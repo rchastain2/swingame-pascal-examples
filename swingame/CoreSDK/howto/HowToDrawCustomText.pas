@@ -9,7 +9,7 @@ begin
     ClearScreen();
 
     DrawText('You Win!!!', ColorGreen, 300, 200);
-    DrawTextLines('OR DO YOU???', ColorRed, ColorWhite, 'Arial', 18, AlignCenter, 400, 400, 160, 100);
+    DrawText('OR DO YOU???', ColorRed, ColorWhite, 'arial.ttf', 18, AlignCenter, RectangleFrom(400, 400, 160, 100));
 
     RefreshScreen();
     

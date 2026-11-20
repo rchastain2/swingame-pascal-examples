@@ -17,13 +17,13 @@ begin
     
     if KeyTyped(hKey) then HideMouse();
     if KeyTyped(sKey) then ShowMouse();
-    if MouseShown () then DrawText('visible', ColorBlue, 'Arial', 14, 120, 90);
-    if NOT MouseShown () then DrawText('not visible', ColorBlue, 'Arial', 14, 120, 90);
+    if MouseShown () then DrawText('visible', ColorBlue, 'arial.ttf', 14, 120, 90);
+    if NOT MouseShown () then DrawText('not visible', ColorBlue, 'arial.ttf', 14, 120, 90);
     if MouseClicked(LeftButton) then str := FloatToStr(MouseX()) + ',' + FloatToStr(MouseY());
-    if MouseDown(LeftButton) then DrawText('is down', ColorBlue, 'Arial', 14, 200, 140);
-    if MouseUp(LeftButton) then DrawText('is up', ColorBlue, 'Arial', 14, 200, 140);
-    if MouseDown(RightButton) then DrawText('is down', ColorBlue, 'Arial', 14, 200, 165);
-    if MouseUp(RightButton) then DrawText('is up', ColorBlue, 'Arial', 14, 200, 165);
+    if MouseDown(LeftButton) then DrawText('is down', ColorBlue, 'arial.ttf', 14, 200, 140);
+    if MouseUp(LeftButton) then DrawText('is up', ColorBlue, 'arial.ttf', 14, 200, 140);
+    if MouseDown(RightButton) then DrawText('is down', ColorBlue, 'arial.ttf', 14, 200, 165);
+    if MouseUp(RightButton) then DrawText('is up', ColorBlue, 'arial.ttf', 14, 200, 165);
     if KeyDown(DOWNKey) then
     begin
       mPos := MousePosition();      
@@ -55,15 +55,15 @@ begin
       MoveMouse(mPos);    
     end;
     
-    DrawText('Mouse Click And Position', ColorRed, 'Arial', 18, 115, 15);
-    DrawText('Press H to hide the cursor', ColorBlue, 'Arial', 14, 20, 40);
-    DrawText('Press S to show the cursor', ColorBlue, 'Arial', 14, 20, 65);
-    DrawText('Cursor status :', ColorBlue, 'Arial', 14, 20, 90);
-    DrawText('Mouse Position at: ' + FloatToStr(MousePosition.x) + ',' + FloatToStr(MouseY()), ColorGreen, 'Arial', 10, 0, 0);
-    DrawText('Mouse last click at position : ' + str, ColorBlue, 'Arial', 14, 20, 115);
-    DrawText('Mouse LeftButton status :', ColorBlue, 'Arial', 14, 20, 140);
-    DrawText('Mouse RightButton status :', ColorBlue, 'Arial', 14, 20, 165);    
-    DrawText('Use Up, Down, Left, Right to move the mouse cursor', ColorBlue, 'Arial', 14, 20, 190);
+    DrawText('Mouse Click And Position', ColorRed, 'arial.ttf', 18, 115, 15);
+    DrawText('Press H to hide the cursor', ColorBlue, 'arial.ttf', 14, 20, 40);
+    DrawText('Press S to show the cursor', ColorBlue, 'arial.ttf', 14, 20, 65);
+    DrawText('Cursor status :', ColorBlue, 'arial.ttf', 14, 20, 90);
+    DrawText('Mouse Position at: ' + FloatToStr(MousePosition.x) + ',' + FloatToStr(MouseY()), ColorGreen, 'arial.ttf', 10, 0, 0);
+    DrawText('Mouse last click at position : ' + str, ColorBlue, 'arial.ttf', 14, 20, 115);
+    DrawText('Mouse LeftButton status :', ColorBlue, 'arial.ttf', 14, 20, 140);
+    DrawText('Mouse RightButton status :', ColorBlue, 'arial.ttf', 14, 20, 165);    
+    DrawText('Use Up, Down, Left, Right to move the mouse cursor', ColorBlue, 'arial.ttf', 14, 20, 190);
     
     RefreshScreen(60);    
   until WindowCloseRequested() OR KeyTyped(ESCAPEKey) OR KeyTyped(QKey);  

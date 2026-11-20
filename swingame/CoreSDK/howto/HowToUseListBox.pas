@@ -5,7 +5,7 @@ uses
 procedure Main();
 var
   p1,p2 : Panel;  
-  lst    : GUIList;  
+  lst    : Region;  
 begin
   OpenAudio();
   OpenGraphicsWindow('How To Use ListBox ', 320, 240);
@@ -33,7 +33,7 @@ begin
   
   p1 := LoadPanel('lst-box-panel.txt');  
   ShowPanel(p1);
-  lst := ListFromRegion(RegionWithID(p1, 'List1'));
+  lst := RegionWithID(p1, 'List1');
   
   ListAddItem(lst, 'Game');
   ListAddItem(lst, 'Diving Turtle');

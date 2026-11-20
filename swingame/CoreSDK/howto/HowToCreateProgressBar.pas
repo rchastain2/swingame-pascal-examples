@@ -26,7 +26,7 @@ begin
         width := width + 31;
         partRect := RectangleFrom(0, 0, width, 39);
     end;
-    DrawBitmapPart (fullBar, partRect, 46, 180);
+    DrawBitmap(fullBar, 46, 180, OptionPartBmp(partRect));
     RefreshScreen();
     until WindowCloseRequested();
 

@@ -11,11 +11,11 @@ begin
   
     ClearScreen(ColorWhite);
     
-    DrawTextOnScreen('How To Draw On Screen', ColorRed, 330, 40);        
+    DrawText('How To Draw On Screen', ColorRed, 330, 40, OptionToScreen());        
     
-    FillRectangleOnScreen(RGBColor(205,201,201), 400, 300, 100, 100);    
-    FillEllipseOnScreen(RandomColor(), 100, 100, 60, 30);    
-    DrawCircleOnScreen(RandomColor(), 105, 420, 30);        
+    FillRectangle(RGBColor(205,201,201), 400, 300, 100, 100, OptionToScreen());    
+    FillEllipse(RandomColor(), 100, 100, 60, 30, OptionToScreen());    
+    DrawCircle(RandomColor(), 105, 420, 30, OptionToScreen());        
     
     RefreshScreen(60);
   until WindowCloseRequested();

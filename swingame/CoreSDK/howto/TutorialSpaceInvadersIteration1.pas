@@ -1,6 +1,6 @@
 program SpaceInvaders;
-uses 
-	sgGraphics, sgSprites, sgPhysics, sgTypes, sgImages, sgUtils, sgInput, sgAudio, sgAnimations, sgResources, sgText;
+uses
+	SwinGame, sgTypes;
 {	
 const COLS = 10;				const BULLET_X_OFFSET = 12;
 const ROWS = 5;					const PLAYER_BULLET_Y_DIFF = 1;

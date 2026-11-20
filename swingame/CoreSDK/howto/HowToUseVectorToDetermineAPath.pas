@@ -26,8 +26,8 @@ begin
     resultant := SubtractVectors(planetVector, ufoVector);
     distance := LineFromVector(ufoVector, resultant);
   
-    DrawBitmap ('planet', planetVector);
-    DrawBitmap ('ufo', ufoVector);
+    DrawBitmap('planet', planetVector.x, planetVector.y);
+    DrawBitmap('ufo', ufoVector.x, ufoVector.y);
     DrawLine(ColorBlue, origin, planetVector);
     DrawLine(ColorRed, origin, ufoVector);
     DrawLine(ColorGreen, distance);

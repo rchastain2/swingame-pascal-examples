@@ -22,30 +22,30 @@ begin
     
     if KeyDown(RightCtrlKey) OR KeyDown(LeftCtrlKey) then
     begin
-      if KeyTyped(Key1) then sndEffect := SoundEffectNamed('chipmunk.ogg');
-      if KeyTyped(Key2) then sndEffect := SoundEffectNamed('bells.ogg');
-      if KeyTyped(Key3) then sndEffect := SoundEffectNamed('camera.ogg');
-      if KeyTyped(Key4) then sndEffect := SoundEffectNamed('comedy-boing.ogg');
-      if KeyTyped(Key5) then sndEffect := SoundEffectNamed('dinosaur.ogg');
-      if KeyTyped(Key6) then sndEffect := SoundEffectNamed('dog-bark.ogg');
+      if KeyTyped(Num1Key) then sndEffect := SoundEffectNamed('chipmunk.ogg');
+      if KeyTyped(Num2Key) then sndEffect := SoundEffectNamed('bells.ogg');
+      if KeyTyped(Num3Key) then sndEffect := SoundEffectNamed('camera.ogg');
+      if KeyTyped(Num4Key) then sndEffect := SoundEffectNamed('comedy-boing.ogg');
+      if KeyTyped(Num5Key) then sndEffect := SoundEffectNamed('dinosaur.ogg');
+      if KeyTyped(Num6Key) then sndEffect := SoundEffectNamed('dog-bark.ogg');
     end
     else
     begin
-      if KeyTyped(Key1) then PlaySoundEffect(sndEffect);
-      if KeyTyped(Key2) then PlaySoundEffect(sndEffect, 0.5);
-      if KeyTyped(Key3) then PlaySoundEffect(sndEffect, 3, 0.25);
-      if KeyTyped(Key4) then PlaySoundEffect(sndEffect, -1, 0.1);
-      if KeyTyped(Key5) then if SoundEffectPlaying(sndEffect) then StopSoundEffect(sndEffect);
+      if KeyTyped(Num1Key) then PlaySoundEffect(sndEffect);
+      if KeyTyped(Num2Key) then PlaySoundEffect(sndEffect, 0.5);
+      if KeyTyped(Num3Key) then PlaySoundEffect(sndEffect, 3, 0.25);
+      if KeyTyped(Num4Key) then PlaySoundEffect(sndEffect, -1, 0.1);
+      if KeyTyped(Num5Key) then if SoundEffectPlaying(sndEffect) then StopSoundEffect(sndEffect);
     end;
     
     ClearScreen(ColorWhite);
-    DrawText('Control Sound (Escape or q to quit)', ColorRed, 'Arial', 18, 15, 15);
-    DrawText('1: Play Sound At Full Volume', ColorBlue, 'Arial', 14, 20, 50);
-    DrawText('2: Play Sound At 50% Volume', ColorBlue, 'Arial', 14, 20, 80);
-    DrawText('3: Play Sound At 25% Volume 3 Times', ColorBlue, 'Arial', 14, 20, 110);
-    DrawText('4: Play Sound Continuously at 10%', ColorBlue, 'Arial', 14, 20, 140);
-    DrawText('5: Stop Playing Current Sound', ColorBlue, 'Arial', 14, 20, 170);
-    DrawText('CTRL + (1-6) load different sound effects', ColorBlue, 'Arial', 14, 20, 200);		
+    DrawText('Control Sound (Escape or q to quit)', ColorRed, 'arial.ttf', 18, 15, 15);
+    DrawText('1: Play Sound At Full Volume', ColorBlue, 'arial.ttf', 14, 20, 50);
+    DrawText('2: Play Sound At 50% Volume', ColorBlue, 'arial.ttf', 14, 20, 80);
+    DrawText('3: Play Sound At 25% Volume 3 Times', ColorBlue, 'arial.ttf', 14, 20, 110);
+    DrawText('4: Play Sound Continuously at 10%', ColorBlue, 'arial.ttf', 14, 20, 140);
+    DrawText('5: Stop Playing Current Sound', ColorBlue, 'arial.ttf', 14, 20, 170);
+    DrawText('CTRL + (1-6) load different sound effects', ColorBlue, 'arial.ttf', 14, 20, 200);		
     
     RefreshScreen(60);
   until WindowCloseRequested() OR KeyTyped(EscapeKey) OR KeyTyped(QKey);

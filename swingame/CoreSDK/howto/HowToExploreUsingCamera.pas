@@ -16,7 +16,7 @@ begin
     if KeyDown(RIGHTKey) then MoveCameraBy(+1, 0);
     
     // Move Camera to a certain point
-    if KeyTyped(Key0) then MoveCameraTo(0, 0);     
+    if KeyTyped(Num0Key) then MoveCameraTo(0, 0);     
     
     //Draw the scene
     ClearScreen(ColorWhite);    
@@ -44,7 +44,7 @@ begin
     FillEllipse(ColorBlue, 300, 50, 60, 30);
     DrawText('Ellipse in blue at position 300,50', ColorRed, 380, 60);        
     
-    DrawTextOnScreen(PointToString(CameraPos()), ColorBlack, 0, 0);    
+    DrawText(PointToString(CameraPos()), ColorBlack, 0, 0, OptionToScreen());    
     
     RefreshScreen();    
     

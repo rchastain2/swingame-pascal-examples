@@ -359,7 +359,7 @@ var
 begin
 	partRect := RectangleFrom(0, 0, width, LIFE_BAR_HEIGHT);
 	DrawText('SHIPS LEFT', ColorWhite, FontNamed('Courier'), 260, 5);
-	DrawBitmapPart (BitmapNamed('LifeBar'), partRect, 370, 0);
+	DrawBitmap(BitmapNamed('LifeBar'), 370, 0, OptionPartBmp(partRect));
 end;
 
 procedure UpdateGame(var data: SpaceInvadersData);

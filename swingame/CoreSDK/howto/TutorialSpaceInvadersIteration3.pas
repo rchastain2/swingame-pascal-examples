@@ -1,6 +1,6 @@
 program SpaceInvaders;
-uses 
-	sgGraphics, sgSprites, sgPhysics, sgTypes, sgImages, sgUtils, sgInput, sgAudio, sgAnimations, sgResources, sgText;
+uses
+	SwinGame, sgTypes;
 {	
 const MAX_BULLETS = 10;			const ALIEN_BULLET_Y_DIFF = 24;
 const DEMERIT_POINTS = 10;		const SHOOT_PERCENT = 0.05;

@@ -2,7 +2,17 @@ program HowToDetectShapeCollision;
 uses
   SwinGame, sgTypes;  
 
-procedure BouncingCircle(var cPoint : Point2D; c : Circle; l : LinesArray);
+function CircleLinesCollision(const c: Circle; const l: array of LineSegment): Boolean;
+var
+  i: Integer;
+begin
+  result := false;
+  for i := 0 to High(l) do
+    if LineIntersectsCircle(l[i], c) then
+      exit(true);
+end;
+
+procedure BouncingCircle(var cPoint : Point2D; c : Circle; const l : array of LineSegment);
 var  
   random : Integer;
 begin

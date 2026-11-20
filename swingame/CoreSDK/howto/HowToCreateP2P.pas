@@ -1,6 +1,11 @@
 program HowToCreateHost;
 uses
-  SwinGame, sgTypes, sgNetworking, SysUtils;
+  SwinGame, sgTypes, SysUtils;
+
+var
+  server : ServerSocket = nil;
+  peer : Connection = nil;
+  knownConnections : Integer = 0;
 
 //----------------------------------------------------------------------------
 // Init
@@ -19,58 +24,68 @@ procedure SetLabelText();
 begin
   LabelSetText('MyIPLbl', 'My IP:');
   LabelSetText('MyIPVal', MyIP());
-  LabelSetText('MyPorttLbl', 'Port: ');
+  LabelSetText('MyPortLbl', 'Port: ');
   LabelSetText('HostStatusLbl', 'Status: ');
 
-  LabelSetText('MsgsLbl', 'Message: ');
+  LabelSetText('MsgLbl', 'Message: ');
 
   LabelSetText('ServerLbl', 'Server:');
-  LabelSetText('ServerPorttLbl', 'Port: ');
+  LabelSetText('ServerPortLbl', 'Port: ');
   LabelSetText('ClientStatusLbl', 'Status: ');
-  LabelSetText('ServerVal', '127.0.0.1');
+  TextboxSetText('ServerVal', '127.0.0.1');
+end;
+
+procedure AddMessage(aMenuPanel : Panel; const aText : String);
+begin
+  ListAddItem(aMenuPanel, 'MsgList', aText);
+  ListSetActiveItemIndex(aMenuPanel, 'MsgList', ListItemCount(aMenuPanel, 'MsgList') - 1);
 end;
 
 //----------------------------------------------------------------------------
 // Connect
 //----------------------------------------------------------------------------
 
-procedure CreateHost(var aMenuPanel : Panel; var aStatus : Boolean);
+procedure CreateHost(aMenuPanel : Panel; var aStatus : Boolean);
 var
   lPort : Integer;
 begin
   if TryStrToInt(TextBoxText('MyPortVal'), lPort) then
   begin
-    CreateTCPHost(lPort);
-    LabelSetText('HostStatusVal', 'Listening...');
-    LabelSetText('HostLbl', 'Disconnect');
-    ListAddItem(aMenuPanel, 'MsgList',  'Now Listening for Connections....');
-    aStatus := True;
+    server := CreateServer('P2PHost', lPort);
+    if Assigned(server) then
+    begin
+      knownConnections := 0;
+      LabelSetText('HostStatusVal', 'Listening...');
+      LabelSetText('HostLbl', 'Disconnect');
+      AddMessage(aMenuPanel, 'Now Listening for Connections....');
+      aStatus := True;
+    end;
   end;
 end;
 
-procedure ConnectToHost(aMenuPanel : Panel; var aStatus : Boolean; var lPeer : Connection);
+procedure ConnectToHost(aMenuPanel : Panel; var aStatus : Boolean);
 var
   lPort : Integer;
 begin
   if TryStrToInt(TextBoxText('ServerPortVal'), lPort) then
   begin
-		lPeer := CreateTCPConnection(TextBoxText('ServerVal'), lPort);
-    if Assigned(lPeer) then
+    peer := OpenConnection(TextBoxText('ServerVal'), lPort);
+    if Assigned(peer) then
     begin
       LabelSetText('ClientStatusVal', 'Connected');
-      ListAddItem(aMenuPanel, 'MsgList', 'Connected to: ' + TextBoxText('ServerVal') + ':' + IntToStr(lPort));
+      AddMessage(aMenuPanel, 'Connected to: ' + TextBoxText('ServerVal') + ':' + IntToStr(lPort));
       LabelSetText('ConnLbl', 'Disconnect');
       aStatus := True;
     end;
   end;
 end;
 
-procedure AcceptConnection(var aMenuPanel : Panel; var lPeer : Connection);
+procedure AcceptConnection(aMenuPanel : Panel);
 begin
-  if AcceptTCPConnection(); then
+  while ConnectionCount(server) > knownConnections do
   begin
-		lPeer := FetchConnection();
-    ListAddItem(aMenuPanel, 'MsgList',  + 'Connected.');
+    Inc(knownConnections);
+    AddMessage(aMenuPanel, 'A peer connected.');
   end;
 end;
 
@@ -78,23 +93,24 @@ end;
 // Disconnect
 //----------------------------------------------------------------------------
 
-procedure DisconnectHost(var aMenuPanel : Panel; var aStatus : Boolean);
+procedure DisconnectHost(aMenuPanel : Panel; var aStatus : Boolean);
 begin
-  CloseAllTCPReceiverSocket();
-  CloseAllTCPHostSocket();
+  CloseServer(server);
+  server := nil;
   LabelSetText('HostStatusVal', 'Idle');
   LabelSetText('HostLbl', 'Connect');
-  ListAddItem(aMenuPanel, 'MsgList',  'Listening Sockets Closed.');
+  AddMessage(aMenuPanel, 'Listening Sockets Closed.');
   aStatus := False;
 end;
 
-procedure DisconnectFromAllHost(aMenuPanel : Panel; var aStatus : Boolean);
+procedure DisconnectFromHost(aMenuPanel : Panel; var aStatus : Boolean);
 begin
-  BroadcastTCPMessage('[ClientDisconnect]');
-  CloseAllTCPSenderSocket();
+  SendMessageTo('[ClientDisconnect]', peer);
+  CloseConnection(peer);
+  peer := nil;
   LabelSetText('ClientStatusVal', 'Disconnected');
   LabelSetText('ConnLbl', 'Connect');
-  ListAddItem(aMenuPanel, 'MsgList', 'You Disconnected.');
+  AddMessage(aMenuPanel, 'You Disconnected.');
   aStatus := False;
 end;
 
@@ -102,28 +118,51 @@ end;
 // Messages
 //----------------------------------------------------------------------------
 
-procedure ReceiveMessage(var aMenuPanel : Panel);
+procedure ReceiveMessages(aMenuPanel : Panel);
 var
-  i : Integer;
-begin  
-  if (not TCPMessageReceived()) then exit;
-  for i:= 0 to GetMessageCount() - 1 do
-  begin
-    if (GetMessage() = '[ClientDisconnect]') then
+  lMsg : Message;
+begin
+  if Assigned(server) then
+    while HasMessages(server) do
     begin
-      CloseTCPReceiverSocket(GetIPFromMessage(), GetPortFromMessage());
-      ListAddItem(aMenuPanel, 'MsgList',  GetIPFromMessage() + ' Disconnected.');
-    end else begin
-      ListAddItem(aMenuPanel, 'MsgList',  GetIPFromMessage() + ' said: ' + GetMessage());
-      ListSetActiveItemIndex(aMenuPanel, 'MsgList', ListItemCount('MsgList') - 1);
+      lMsg := ReadMessage(server);
+      if MessageData(lMsg) = '[ClientDisconnect]' then
+        AddMessage(aMenuPanel, MessageHost(lMsg) + ' Disconnected.')
+      else
+        AddMessage(aMenuPanel, MessageHost(lMsg) + ' said: ' + MessageData(lMsg));
+      CloseMessage(lMsg);
     end;
-    DequeueTopMessage();
-  end;
+
+  if Assigned(peer) then
+    while HasMessages(peer) do
+      AddMessage(aMenuPanel, 'Host said: ' + ReadMessageData(peer));
 end;
 
 //----------------------------------------------------------------------------
 // Input
 //----------------------------------------------------------------------------
+
+procedure SendText(aChatPanel : Panel; var aClientStatus : Boolean);
+var
+  lText : String;
+begin
+  lText := TextBoxText('MsgVal');
+  if lText = '' then exit;
+
+  if Assigned(server) then
+    BroadcastMessage(lText, server);
+
+  if Assigned(peer) and not SendMessageTo(lText, peer) then
+  begin
+    AddMessage(aChatPanel, 'Host Disconnected.');
+    DisconnectFromHost(aChatPanel, aClientStatus);
+    exit;
+  end;
+
+  AddMessage(aChatPanel, 'You Say: ' + lText);
+  TextboxSetText('MsgVal', '');
+  GUISetActiveTextbox('MsgVal');
+end;
 
 procedure HandleGUIInput(aChatPanel : Panel; var aServerStatus, aClientStatus : Boolean);
 begin
@@ -136,22 +175,10 @@ begin
   else if (not aClientStatus) and (RegionClickedID() = 'ConnectBtn') then
     ConnectToHost(aChatPanel, aClientStatus)
   else if (aClientStatus) and (RegionClickedID() = 'ConnectBtn') then
-    DisconnectFromAllHost(aChatPanel, aClientStatus)
+    DisconnectFromHost(aChatPanel, aClientStatus)
   //Message Input
-  else if GUITextEntryComplete() and (GUITextBoxOfTextEntered() = TextBoxFromID('MsgVal')) then
-  begin
-    if (TextBoxText('MsgVal') = '') then exit;
-    if (Length(BroadcastTCPMessage(TextBoxText('MsgVal'))) <> 0) then
-    begin
-      ListAddItem(aChatPanel, 'MsgList', 'Host Disconnected.');      
-      DisconnectFromAllHost(aChatPanel, aClientStatus);
-      exit;
-    end;
-    ListAddItem(aChatPanel, 'MsgList', 'You Say: ' + TextBoxText('MsgVal'));
-    ListSetActiveItemIndex(aChatPanel, 'MsgList', ListItemCount('MsgList') - 1);
-    TextBoxSetText('MsgVal', '');
-    GUISetActiveTextbox(TextBoxFromID('MsgVal'));
-  end;
+  else if GUITextEntryComplete() and (RegionOfLastUpdatedTextBox() = RegionWithID('MsgVal')) then
+    SendText(aChatPanel, aClientStatus);
 end;
 
 procedure Main();
@@ -160,10 +187,9 @@ var
   //True for Listening, False for Idle.
   lHostStatus : Boolean = False;
   //True for Connected, False for Disconnected
-  lClientStatus : Boolean = False; 
-	lPeer : Connection = nil;
+  lClientStatus : Boolean = False;
 begin
-  OpenGraphicsWindow('How To Create Host', 800, 600); 
+  OpenGraphicsWindow('How To Create Host', 800, 600);
   LoadDefaultColors();
 
   LoadResourceBundle('main-menu.txt');
@@ -177,19 +203,21 @@ begin
 
   repeat
     ProcessEvents();
+    CheckNetworkActivity();
     ClearScreen(ColorBlack);
-    
-    DrawPanels();
+
+    DrawInterface();
     UpdateInterface();
     HandleGUIInput(lChatPanel, lHostStatus, lClientStatus);
-		if not lHostStatus then
-			AcceptConnection(lChatPanel, lPeer);
-		else
-			ConnectToHost(aMenuPanel : Panel; var aStatus : Boolean; var lPeer : Connection);
-    ReceiveMessage(lChatPanel);
+    if lHostStatus then
+      AcceptConnection(lChatPanel);
+    ReceiveMessages(lChatPanel);
 
     RefreshScreen();
   until WindowCloseRequested();
+
+  CloseAllConnections();
+  CloseAllServers();
   ReleaseAllResources();
 end;
 

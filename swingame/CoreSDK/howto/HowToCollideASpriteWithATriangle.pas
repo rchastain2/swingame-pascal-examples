@@ -5,7 +5,6 @@ uses
 procedure Main();
 var
     leftTri, rightTri, topTri, bottomTri: Triangle;
-    leftLines, rightLines, topLines, bottomLines: LinesArray;
     ball: Sprite;
 begin
     OpenGraphicsWindow('Bouncing Ball', 800, 600);
@@ -18,11 +17,6 @@ begin
     rightTri := TriangleFrom(790, 10, 790, 580, 600, 285);
     topTri := TriangleFrom(10, 10, 780, 10, 390, 170);
     bottomTri := TriangleFrom(10, 590, 780, 590, 390 ,430);
-
-    leftLines := LinesFrom(leftTri);
-    rightLines := LinesFrom(rightTri);
-    topLines := LinesFrom(topTri);
-    bottomLines := LinesFrom(bottomTri);
 
     ball := CreateSprite(BitmapNamed('ball'));
     SpriteSetX(ball, 300);
@@ -42,16 +36,16 @@ begin
         UpdateSprite(ball);
 
         if CircleTriangleCollision(SpriteCircle(ball), leftTri) then
-            CollideCircleLines(ball, leftLines);
+            CollideCircleTriangle(ball, leftTri);
 
         if CircleTriangleCollision(SpriteCircle(ball), rightTri) then
-            CollideCircleLines(ball, rightLines);
+            CollideCircleTriangle(ball, rightTri);
 
         if CircleTriangleCollision(SpriteCircle(ball), topTri) then
-            CollideCircleLines(ball, topLines);
+            CollideCircleTriangle(ball, topTri);
 
         if CircleTriangleCollision(SpriteCircle(ball), bottomTri) then
-            CollideCircleLines(ball, bottomLines);
+            CollideCircleTriangle(ball, bottomTri);
 
         RefreshScreen();
     until WindowCloseRequested();
