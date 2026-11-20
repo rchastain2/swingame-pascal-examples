@@ -12,7 +12,6 @@ begin
   FPUExceptionMask := GetExceptionMask;
   SetExceptionMask(FPUExceptionMask + [exZeroDivide, exInvalidOp]);
   
-  OpenAudio();
   OpenGraphicsWindow('Animation example', 252, 252);
   
   LoadResourceBundle('demo.txt');
@@ -27,8 +26,5 @@ begin
     RefreshScreen(60);
   until WindowCloseRequested();
 
-  Delay(800);
-
-  CloseAudio();
   ReleaseAllResources();
 end.
