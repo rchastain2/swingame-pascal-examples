@@ -15,9 +15,9 @@ begin
   OpenGraphicsWindow('How To Use Button ', 320, 240);
   LoadDefaultColors();  
   
-  p1 := LoadPanel('buttonPanel1.txt');  
+  p1 := LoadPanel('button-panel1.txt');  
   ShowPanel(p1);
-  p2 := LoadPanel('buttonPanel2.txt');  
+  p2 := LoadPanel('button-panel2.txt');  
   ShowPanel(p2);
   PanelSetDraggable(p1, false);  
   PanelSetDraggable(p2, false);    

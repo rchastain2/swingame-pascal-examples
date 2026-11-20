@@ -12,7 +12,7 @@ begin
 
     ClearScreen(ColorWhite);
 
-    LoadBitmapNamed('ball', 'ball_small.png');
+    LoadBitmapNamed('ball', 'ball-small.png');
 
     leftTri := TriangleFrom(10, 10, 10, 580, 200, 285);
     rightTri := TriangleFrom(790, 10, 790, 580, 600, 285);

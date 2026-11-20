@@ -166,10 +166,10 @@ begin
   OpenGraphicsWindow('How To Create Host', 800, 600); 
   LoadDefaultColors();
 
-  LoadResourceBundle('MainMenu.txt');
+  LoadResourceBundle('main-menu.txt');
   lServerPanel := LoadPanel('hostpanel.txt');
   lClientPanel := LoadPanel('clientpanel.txt');
-  lChatPanel := LoadPanel('ChatWindowPanel.txt');
+  lChatPanel := LoadPanel('chat-window-panel.txt');
   InitPanel(lServerPanel);
   InitPanel(lClientPanel);
   InitPanel(lChatPanel);

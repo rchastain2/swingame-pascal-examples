@@ -363,7 +363,7 @@ var
 begin
 	OpenAudio();
     OpenGraphicsWindow('Moving Sprite Using Animation', 640, 480);
-	LoadResourceBundle('SpaceInvaders.txt');
+	LoadResourceBundle('space-invaders.txt');
 
 	InitGame(gameData);
 	repeat

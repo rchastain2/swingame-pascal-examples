@@ -11,7 +11,7 @@ begin
 
     ClearScreen(ColorWhite);
 
-    LoadBitmapNamed('ball', 'ball_small.png');
+    LoadBitmapNamed('ball', 'ball-small.png');
 
     leftLine := LineFrom(10, 10, 10, 590);
     rightLine := LineFrom(790, 10, 790, 590);

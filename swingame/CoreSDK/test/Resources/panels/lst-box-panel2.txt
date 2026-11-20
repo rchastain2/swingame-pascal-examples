@@ -13,11 +13,11 @@ w: 320
 //height
 h: 60
 //active bmp
-a: ButtonForListBoxActive.png
+a: button-for-list-box-active.png
 // Background Image
-b: ButtonForListBox.png
+b: button-for-list-box.png
 //inactive bmp
-i: ButtonForListBox.png
+i: button-for-list-box.png
 //Draggable
 d: true
 v: false

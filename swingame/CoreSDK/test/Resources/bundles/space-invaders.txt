@@ -1,0 +1,17 @@
+BITMAP,Invader1,invader1.png,40,40,2,1,2
+BITMAP,Invader2,invader2.png,40,40,2,1,2
+BITMAP,Invader3,invader3.png,40,40,2,1,2
+BITMAP,explosionBmp,explosion-pro.png,72,72,6,7,42
+BITMAP,fireBmp,red-explosion.png,38,38,8,2,16
+BITMAP,Background,space.jpg
+BITMAP,PlayerBullet,player-bullet.png
+BITMAP,AlienBullet,bullet.png
+BITMAP,Player,player.png
+BITMAP,LifeBar,player-life.png
+ANIM,InvaderAnim,invader-anim.txt
+ANIM,explosionScrpt,explosion.txt
+ANIM,fire,red-explosion.txt
+SOUND,Destroy,destroy.wav
+SOUND,Fire,laser.wav
+MUSIC,Background,loop1.mp3
+FONT,Courier,cour.ttf,16

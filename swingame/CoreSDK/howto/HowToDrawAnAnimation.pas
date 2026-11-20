@@ -9,7 +9,7 @@ begin
     OpenAudio();
     OpenGraphicsWindow('Draw Animation', 200, 200);
     
-    LoadResourceBundle('explosion_bundle.txt');
+    LoadResourceBundle('explosion-bundle.txt');
 
     explosion := CreateAnimation('explosion_loop', AnimationScriptNamed('explosionScrpt'));
     

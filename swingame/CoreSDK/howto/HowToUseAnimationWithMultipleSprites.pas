@@ -9,7 +9,7 @@ begin
     OpenAudio();
     OpenGraphicsWindow('Dance', 800, 600);
 
-    LoadResourceBundle('dance_bundle.txt');
+    LoadResourceBundle('dance-bundle.txt');
     myFrog := CreateSprite(BitmapNamed('FrogBmp'), AnimationScriptNamed('WalkingScript'));
     SpriteStartAnimation(myFrog, 'Dance');
 

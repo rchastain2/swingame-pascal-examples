@@ -4578,7 +4578,7 @@ end;
 // Dialog code
 procedure InitialiseFileDialog();
 begin
-  if not HasPanel('fdFileDialog') then LoadResourceBundle('FileDialog.txt');
+  if not HasPanel('fdFileDialog') then LoadResourceBundle('file-dialog.txt');
 
   with dialog do
   begin

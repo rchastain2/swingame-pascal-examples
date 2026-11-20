@@ -11,8 +11,8 @@ var
 begin
     OpenGraphicsWindow('Progress Bar', 400, 400);
 
-    LoadBitmapNamed('empty', 'progress_empty.png');
-    fullBar := LoadBitmapNamed('full', 'progress_full.png');
+    LoadBitmapNamed('empty', 'progress-empty.png');
+    fullBar := LoadBitmapNamed('full', 'progress-full.png');
     width := 0;
     partRect := RectangleFrom(0, 0, width, 39);
 

@@ -8,7 +8,7 @@ begin
     
     ClearScreen(ColorWhite);
 
-    LoadBitmapNamed('rocket image', 'rocket_large.png');
+    LoadBitmapNamed('rocket image', 'rocket-large.png');
     DrawBitmap ('rocket image', 111, 4);
     RefreshScreen();
     Delay(5000);

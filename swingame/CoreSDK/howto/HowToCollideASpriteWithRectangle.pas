@@ -11,7 +11,7 @@ begin
 
     ClearScreen(ColorWhite);
 
-    LoadBitmapNamed('ball', 'ball_small.png');
+    LoadBitmapNamed('ball', 'ball-small.png');
 
     leftRect := RectangleFrom(50, 80, 30, 440);
     rightRect := RectangleFrom(720, 80, 30, 440);

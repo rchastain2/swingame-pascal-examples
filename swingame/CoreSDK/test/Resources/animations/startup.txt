@@ -58,7 +58,7 @@ f:[57-62],[5-0],1,
 //sounds
 //
 //s:ID,SND,filename
-s:0,SwinGameStart,SwinGameStart.wav
+s:0,SwinGameStart,swingame-start.wav
 
 //Animation identifiers.
 //

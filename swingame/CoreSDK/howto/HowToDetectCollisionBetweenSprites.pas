@@ -8,7 +8,7 @@ var
 begin
     OpenGraphicsWindow('Detect Collision', 800, 600);
 
-    LoadBitmapNamed('ball', 'ball_small.png');
+    LoadBitmapNamed('ball', 'ball-small.png');
 
     ball1 := CreateSprite(BitmapNamed('ball'));
     ball2 := CreateSprite(BitmapNamed('ball'));

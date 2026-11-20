@@ -1,0 +1,5 @@
+BITMAP,fireBmp,red-explosion.png
+ANIM,fire,red-explosion.txt
+FONT,harabaraText,hara.ttf,36
+SOUND,danceBeat,breakdance.wav
+MUSIC,danceMusic,dancing-frog.wav

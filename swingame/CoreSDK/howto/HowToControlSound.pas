@@ -13,9 +13,9 @@ begin
   sndEffect := LoadSoundEffect('chipmunk.ogg');
   LoadSoundEffect('bells.ogg');
   LoadSoundEffect('camera.ogg');      
-  LoadSoundEffect('comedy_boing.ogg'); 
+  LoadSoundEffect('comedy-boing.ogg'); 
   LoadSoundEffect('dinosaur.ogg');
-  LoadSoundEffect('dog_bark.ogg');      
+  LoadSoundEffect('dog-bark.ogg');      
   
   repeat // The game loop...
     ProcessEvents();
@@ -25,9 +25,9 @@ begin
       if KeyTyped(Key1) then sndEffect := SoundEffectNamed('chipmunk.ogg');
       if KeyTyped(Key2) then sndEffect := SoundEffectNamed('bells.ogg');
       if KeyTyped(Key3) then sndEffect := SoundEffectNamed('camera.ogg');
-      if KeyTyped(Key4) then sndEffect := SoundEffectNamed('comedy_boing.ogg');
+      if KeyTyped(Key4) then sndEffect := SoundEffectNamed('comedy-boing.ogg');
       if KeyTyped(Key5) then sndEffect := SoundEffectNamed('dinosaur.ogg');
-      if KeyTyped(Key6) then sndEffect := SoundEffectNamed('dog_bark.ogg');
+      if KeyTyped(Key6) then sndEffect := SoundEffectNamed('dog-bark.ogg');
     end
     else
     begin

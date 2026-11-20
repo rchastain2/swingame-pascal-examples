@@ -9,7 +9,7 @@ begin
     OpenAudio();
     OpenGraphicsWindow('Create Multiple Animations', 200, 200);
 
-    LoadResourceBundle('explosion_bundle.txt');
+    LoadResourceBundle('explosion-bundle.txt');
 
     explosion := CreateSprite(BitmapNamed('explosionBmp'), AnimationScriptNamed('explosionScrpt'));
 

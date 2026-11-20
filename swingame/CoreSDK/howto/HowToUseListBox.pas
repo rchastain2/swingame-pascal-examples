@@ -14,7 +14,7 @@ begin
   GUISetBackgroundColor(ColorWhite); 
   GUISetForegroundColor(ColorGreen);  
   
-  LoadResourceBundle('MainMenu.txt');
+  LoadResourceBundle('main-menu.txt');
   
   //LoadMusic
   LoadMusic('game.ogg');
@@ -26,12 +26,12 @@ begin
   LoadMusic('chipmunk.ogg');
   LoadMusic('bells.ogg');
   LoadMusic('camera.ogg');      
-  LoadMusic('comedy_boing.ogg'); 
+  LoadMusic('comedy-boing.ogg'); 
   LoadMusic('dinosaur.ogg');
-  LoadMusic('dog_bark.ogg');
+  LoadMusic('dog-bark.ogg');
   
   
-  p1 := LoadPanel('lstBoxPanel.txt');  
+  p1 := LoadPanel('lst-box-panel.txt');  
   ShowPanel(p1);
   lst := ListFromRegion(RegionWithID(p1, 'List1'));
   
@@ -48,7 +48,7 @@ begin
   ListAddItem(lst, 'Dinosaur');
   ListAddItem(lst, 'Dog Bark');
   
-  p2 := LoadPanel('lstBoxPanel2.txt');  
+  p2 := LoadPanel('lst-box-panel2.txt');  
   ShowPanel(p2);
   PanelSetDraggable(p1, false);  
   PanelSetDraggable(p2, false);  
@@ -67,9 +67,9 @@ begin
       if ListActiveItemIndex(lst) = 6 then PlayMusic('chipmunk.ogg');      
       if ListActiveItemIndex(lst) = 7 then PlayMusic('bells.ogg');
       if ListActiveItemIndex(lst) = 8 then PlayMusic('camera.ogg');
-      if ListActiveItemIndex(lst) = 9 then PlayMusic('comedy_boing.ogg');
+      if ListActiveItemIndex(lst) = 9 then PlayMusic('comedy-boing.ogg');
       if ListActiveItemIndex(lst) = 10 then PlayMusic('dinosaur.ogg');
-      if ListActiveItemIndex(lst) = 11 then PlayMusic('dog_bark.ogg');
+      if ListActiveItemIndex(lst) = 11 then PlayMusic('dog-bark.ogg');
     end;
     if RegionClickedId() = 'Button2' then  if MusicPlaying() then PauseMusic();      
     if RegionClickedId() = 'Button3' then ResumeMusic();    

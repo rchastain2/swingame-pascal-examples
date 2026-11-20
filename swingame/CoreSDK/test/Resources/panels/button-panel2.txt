@@ -1,29 +1,27 @@
-// Panel Version: 1
-
-// Load bitmaps for the panel 
-// b: name,filename
-// b:main_menu_bmp,main_menu.png
-// Load Fonts for labels before creating panels.
-
+// Panel 2
 // Panel data:
 x: 0
-y: 0
-//width
+y: 180
 w: 320
-//height
-h: 180
+h: 60
 //active bmp
-a: lstBoxPanel1Active.png
+a: button-active.png
 // Background Image
-b: lstBoxPanel1.png
+b: button.png
 //inactive bmp
-i: lstBoxPanel1.png
+i: button.png
 //Draggable
 d: true
 v: false
 
-//List
-r: 8,5, 306, 165, List, List1, 1, 6, -1, courier, 16, 16, v, lstBoxScrollButton.png
+// Region data
+// Format: r: x, y, w, h, kind
+r: 29, 14, 102, 32, Button, Button1
+r: 189, 14, 102, 32, Button, Button2
+
+// Region data
+// Format: r: x, y, w, h, kind
+//r: 10, 10, 80, 20, Label, Label1, courierSmall, l, Hello World
 
 // Lists are loaded as a region with the following format:
 // r: x, y, w, h, 5, ListID, Columns, Rows, ActiveItem, fontID, scrollSize, scrollKind

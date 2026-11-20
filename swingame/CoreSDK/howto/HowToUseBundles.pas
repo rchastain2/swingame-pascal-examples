@@ -8,7 +8,7 @@ begin
     OpenAudio();
     OpenGraphicsWindow('Using Bundles', 300, 300);
 
-    LoadResourceBundle('how_to_bundles.txt');
+    LoadResourceBundle('how-to-bundles.txt');
 
     BitmapSetCellDetails(BitmapNamed('fireBmp'), 38, 38, 8, 2, 16);
     explosion := CreateSprite(BitmapNamed('fireBmp'), AnimationScriptNamed('fire'));

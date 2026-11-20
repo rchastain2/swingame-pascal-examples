@@ -366,7 +366,7 @@ var
 begin
 	OpenAudio();
     OpenGraphicsWindow('Space Invaders', 640, 480);
-	LoadResourceBundle('SpaceInvaders.txt');
+	LoadResourceBundle('space-invaders.txt');
 
 	InitGame(gameData);
 	repeat

@@ -19,7 +19,7 @@ begin
     OpenAudio();
     OpenGraphicsWindow('Moving Sprite Using Animation', 800, 600);
 
-    LoadResourceBundle('dance_bundle.txt');
+    LoadResourceBundle('dance-bundle.txt');
 
     myFrog := CreateSprite(BitmapNamed('FrogBmp'), AnimationScriptNamed('WalkingScript'));
     SpriteStartAnimation(myFrog, 'StandFront');

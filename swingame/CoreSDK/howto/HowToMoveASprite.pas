@@ -8,7 +8,7 @@ var
 begin
     OpenGraphicsWindow('Move a Sprite', 150, 150);
 
-    LoadBitmapNamed('ball', 'ball_small.png');
+    LoadBitmapNamed('ball', 'ball-small.png');
 
     ball := CreateSprite(BitmapNamed('ball'));
     SpriteSetX(ball, 60);

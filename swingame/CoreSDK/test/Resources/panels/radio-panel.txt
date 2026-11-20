@@ -14,11 +14,11 @@ w: 400
 //height
 h: 100
 //active bmp
-a: CheckBoxActiveWithOutText.png
+a: check-box-active-with-out-text.png
 // Background Image
-b: CheckBoxWithOutText.png
+b: check-box-with-out-text.png
 //inactive bmp
-i: CheckBoxWithOutText.png
+i: check-box-with-out-text.png
 //Draggable
 d: true
 v: false

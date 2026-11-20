@@ -9,7 +9,7 @@ begin
   OpenGraphicsWindow('How To Radio Button ', 400, 150);
   LoadDefaultColors();  
   
-  cp := LoadPanel('radioPanel.txt');  
+  cp := LoadPanel('radio-panel.txt');  
   ShowPanel(cp);
   PanelSetDraggable(cp, false);
   
